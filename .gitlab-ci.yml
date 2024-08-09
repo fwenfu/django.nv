@@ -4,7 +4,7 @@ stages:         # Dictionary
  - build        # this is build stage
  - test         # this is test stage
  - integration  # this is an integration stage
- - staging      # this is a staging stage
+ - staging      # this is a staging stage 
  - prod         # this is prod/production stage
 
 build:
