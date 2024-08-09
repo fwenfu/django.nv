@@ -4,25 +4,29 @@ stages:         # Dictionary
  - build        # this is build stage
  - test         # this is test stage
  - integration  # this is an integration stage
+ - staging      # this is a staging stage
  - prod         # this is prod/production stage
 
-job1:
+build:
   stage: build  # this job belongs to the build stage.
   script:
     - echo "This is a build step."  # We are running an echo command, but it can be any command.
 
-job2:
+test:
   stage: test
   script:
     - echo "This is a test step."
-    - exit 1          # Non zero exit code, fails a job.
 
-job3:          
+integration:          
   stage: integration  # integration stage
   script:
     - echo "This is an integration step."
 
-job4:
+staging:
+  stage: staging
+  script:
+    -echo "This is staging step."
+prod:
   stage: prod
   script:
     - echo "This is a deploy step."
