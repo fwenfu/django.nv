@@ -1,18 +1,28 @@
-image: docker:20.10
+# This is how a comment is added to a YAML file; please read them carefully.
 
-services:
-  - docker:dind
+stages:         # Dictionary
+ - build        # this is build stage
+ - test         # this is test stage
+ - integration  # this is an integration stage
+ - prod         # this is prod/production stage
 
-stages:
-  - build
-
-django_build:
-  stage: build
-  image: python:3.6
-  before_script:
-   - pip3 install --upgrade virtualenv
+job1:
+  stage: build  # this job belongs to the build stage.
   script:
-   - virtualenv env
-   - source env/bin/activate
-   - pip install -r requirements.txt
-   - python manage.py check
+    - echo "This is a build step."  # We are running an echo command, but it can be any command.
+
+job2:
+  stage: test
+  script:
+    - echo "This is a test step."
+    - exit 1          # Non zero exit code, fails a job.
+
+job3:          
+  stage: integration  # integration stage
+  script:
+    - echo "This is an integration step."
+
+job4:
+  stage: prod
+  script:
+    - echo "This is a deploy step."
